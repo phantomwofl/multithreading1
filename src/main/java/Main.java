@@ -1,5 +1,7 @@
+import java.util.concurrent.TimeUnit;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadGroup mainGroup = new ThreadGroup("main group");
         final MyThread thread1 = new MyThread(mainGroup, "Поток 1");
         final MyThread thread2 = new MyThread(mainGroup, "Поток 2");
@@ -12,8 +14,8 @@ public class Main {
         thread3.start();
         thread4.start();
 
+        TimeUnit.SECONDS.sleep(10);
+
         mainGroup.interrupt();
-
-
     }
 }
